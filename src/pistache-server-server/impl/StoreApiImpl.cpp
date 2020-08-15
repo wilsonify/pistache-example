@@ -24,16 +24,16 @@ StoreApiImpl::StoreApiImpl(std::shared_ptr<Pistache::Rest::Router> rtr)
     { }
 
 void StoreApiImpl::delete_order(const int64_t &orderId, Pistache::Http::ResponseWriter &response) {
-    response.send(Pistache::Http::Code::Ok, printf("Do some magic\n"));
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void StoreApiImpl::get_inventory(Pistache::Http::ResponseWriter &response) {
-    response.send(Pistache::Http::Code::Ok, printf("Do some magic\n"));
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void StoreApiImpl::get_order_by_id(const int64_t &orderId, Pistache::Http::ResponseWriter &response) {
-    response.send(Pistache::Http::Code::Ok, printf("Do some magic\n"));
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void StoreApiImpl::place_order(const Order &body, Pistache::Http::ResponseWriter &response) {
-    response.send(Pistache::Http::Code::Ok, printf("Do some magic\n"));
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 
 }

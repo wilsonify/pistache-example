@@ -12,56 +12,44 @@
 
 #include "PetApiImpl.h"
 
-namespace org
-{
-    namespace openapitools
-    {
-        namespace server
-        {
-            namespace api
-            {
+namespace org {
+namespace openapitools {
+namespace server {
+namespace api {
 
-                using namespace org::openapitools::server::model;
+using namespace org::openapitools::server::model;
 
-                PetApiImpl::PetApiImpl(std::shared_ptr<Pistache::Rest::Router> rtr)
-                    : PetApi(rtr)
-                {
-                }
+PetApiImpl::PetApiImpl(std::shared_ptr<Pistache::Rest::Router> rtr)
+    : PetApi(rtr)
+    { }
 
-                void PetApiImpl::add_pet(const Pet &body, Pistache::Http::ResponseWriter &response)
-                {
-                    response.send(Pistache::Http::Code::Ok, printf("add_pet Do some magic\n"));
-                }
-                void PetApiImpl::delete_pet(const int64_t &petId, const Pistache::Optional<Pistache::Http::Header::Raw> &apiKey, Pistache::Http::ResponseWriter &response)
-                {
-                    response.send(Pistache::Http::Code::Ok, printf("delete_pet Do some magic\n"));
-                }
-                void PetApiImpl::find_pets_by_status(const Pistache::Optional<std::vector<std::string>> &status, Pistache::Http::ResponseWriter &response)
-                {
-                    response.send(Pistache::Http::Code::Ok, printf("find_pets_by_status Do some magic\n"));
-                }
-                void PetApiImpl::find_pets_by_tags(const Pistache::Optional<std::vector<std::string>> &tags, Pistache::Http::ResponseWriter &response)
-                {
-                    response.send(Pistache::Http::Code::Ok, printf("find_pets_by_tags Do some magic\n"));
-                }
-                void PetApiImpl::get_pet_by_id(const int64_t &petId, Pistache::Http::ResponseWriter &response)
-                {
-                    response.send(Pistache::Http::Code::Ok, printf("get_pet_by_id Do some magic\n"));
-                }
-                void PetApiImpl::update_pet(const Pet &body, Pistache::Http::ResponseWriter &response)
-                {
-                    response.send(Pistache::Http::Code::Ok, printf("update_pet Do some magic\n"));
-                }
-                void PetApiImpl::update_pet_with_form(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response)
-                {
-                    response.send(Pistache::Http::Code::Ok, printf("update_pet_with_form Do some magic\n"));
-                }
-                void PetApiImpl::upload_file(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response)
-                {
-    response.send(Pistache::Http::Code::Ok, printf("upload_file Do some magic\n");
-                }
+void PetApiImpl::add_pet(const Pet &body, Pistache::Http::ResponseWriter &response) {
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
+}
+void PetApiImpl::delete_pet(const int64_t &petId, const Pistache::Optional<Pistache::Http::Header::Raw> &apiKey, Pistache::Http::ResponseWriter &response) {
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
+}
+void PetApiImpl::find_pets_by_status(const Pistache::Optional<std::vector<std::string>> &status, Pistache::Http::ResponseWriter &response) {
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
+}
+void PetApiImpl::find_pets_by_tags(const Pistache::Optional<std::vector<std::string>> &tags, Pistache::Http::ResponseWriter &response) {
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
+}
+void PetApiImpl::get_pet_by_id(const int64_t &petId, Pistache::Http::ResponseWriter &response) {
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
+}
+void PetApiImpl::update_pet(const Pet &body, Pistache::Http::ResponseWriter &response) {
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
+}
+void PetApiImpl::update_pet_with_form(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response){
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
+}
+void PetApiImpl::upload_file(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response){
+    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
+}
 
-            } // namespace api
-        }     // namespace server
-    }         // namespace openapitools
-} // namespace org
+}
+}
+}
+}
+
