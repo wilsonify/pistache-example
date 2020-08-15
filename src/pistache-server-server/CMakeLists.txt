@@ -4,6 +4,9 @@ project(server)
 
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
 
+
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 link_directories(/usr/local/lib/)
 
 aux_source_directory(model MODEL_SOURCES)
@@ -49,6 +52,7 @@ add_executable(store_api_server
 ${STORE_API_SERVER_SOURCES})
 add_executable(user_api_server
 ${USER_API_SERVER_SOURCES})
+
 
 target_link_libraries(pet_api_server pistache pthread)
 target_link_libraries(store_api_server pistache pthread)

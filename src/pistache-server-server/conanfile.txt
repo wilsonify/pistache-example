@@ -1,0 +1,6 @@
+ [requires]
+ pistache/d5608a1@conan/stable
+ nlohmann_json/3.9.1
+
+ [generators]
+ cmake
