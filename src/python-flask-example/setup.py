@@ -1,6 +1,5 @@
 # coding: utf-8
-
-import sys
+from Cython.Build import cythonize
 from setuptools import setup, find_packages
 
 NAME = "openapi_server"
@@ -14,9 +13,9 @@ VERSION = "1.0.0"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = [
-    "connexion==2.0.0",
-    "swagger-ui-bundle==0.0.2",
-    "python_dateutil==2.6.0"
+    "connexion>=2.0.0",
+    "swagger-ui-bundle>=0.0.2",
+    "python_dateutil>=2.6.0"
 ]
 
 setup(
@@ -30,10 +29,10 @@ setup(
     packages=find_packages(),
     package_data={'': ['openapi/openapi.yaml']},
     include_package_data=True,
+    ext_modules=cythonize("openapi_server.py", compiler_directives={"language_level": 3}),
     entry_points={
         'console_scripts': ['openapi_server=openapi_server.__main__:main']},
     long_description="""\
     This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key &#x60;special-key&#x60; to test the authorization     filters.
     """
 )
-
