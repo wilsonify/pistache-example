@@ -1,6 +1,6 @@
 # Makefile for creating our standalone Cython program
 MODULE := openapi_server
-PYTHON := python
+PYTHON := python3
 CYTHON := cython
 PYVERSION := $(shell $(PYTHON) -c "import sys; print(sys.version[:3])")
 PYPREFIX := $(shell $(PYTHON) -c "import sys; print(sys.prefix)")
@@ -9,7 +9,6 @@ PLATINCDIR := $(shell $(PYTHON) -c "from distutils import sysconfig; print(sysco
 LIBDIR1 := $(shell $(PYTHON) -c "from distutils import sysconfig; print(sysconfig.get_config_var('LIBDIR'))")
 LIBDIR2 := $(shell $(PYTHON) -c "from distutils import sysconfig; print(sysconfig.get_config_var('LIBPL'))")
 PYLIB := $(shell $(PYTHON) -c "from distutils import sysconfig; print(sysconfig.get_config_var('LIBRARY')[3:-2])")
-
 CC := $(shell $(PYTHON) -c "import distutils.sysconfig; print(distutils.sysconfig.get_config_var('CC'))")
 LINKCC := $(shell $(PYTHON) -c "import distutils.sysconfig; print(distutils.sysconfig.get_config_var('LINKCC'))")
 LINKFORSHARED := $(shell $(PYTHON) -c "import distutils.sysconfig; print(distutils.sysconfig.get_config_var('LINKFORSHARED'))")
@@ -39,10 +38,9 @@ $(MODULE).out: $(MODULE).o
 	$(LINKCC) -o $@ $^ -L$(LIBDIR1) -L$(LIBDIR2) -l$(PYLIB) $(LIBS) $(SYSLIBS) $(LINKFORSHARED)
 
 $(MODULE).o: $(MODULE).c
-	$(CC) -c $^ -I$(INCDIR) -I$(PLATINCDIR) -o $@
+	$(CC) -c -fPIC $^ -I$(INCDIR) -I$(PLATINCDIR) -o $@
 
 $(MODULE).c: $(MODULE).py
-	@$(PYTHON) setup.py build_ext --inplace
 	@$(PYTHON) -m $(CYTHON) -3 --embed $^
 
 all: $(MODULE).out
