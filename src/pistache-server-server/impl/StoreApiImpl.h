@@ -32,17 +32,15 @@
 #include "Order.h"
 #include <map>
 
-namespace org {
-namespace openapitools {
-namespace server {
-namespace api {
+namespace org::openapitools::server::api
+{
 
 using namespace org::openapitools::server::model;
 
 class StoreApiImpl : public org::openapitools::server::api::StoreApi {
 public:
-    StoreApiImpl(std::shared_ptr<Pistache::Rest::Router>);
-    ~StoreApiImpl() {}
+    explicit StoreApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
+    ~StoreApiImpl() override = default;
 
     void delete_order(const int64_t &orderId, Pistache::Http::ResponseWriter &response);
     void get_inventory(Pistache::Http::ResponseWriter &response);
@@ -51,10 +49,7 @@ public:
 
 };
 
-}
-}
-}
-}
+} // namespace org::openapitools::server::api
 
 
 
