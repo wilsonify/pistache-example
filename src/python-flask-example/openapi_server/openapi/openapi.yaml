@@ -31,6 +31,38 @@ tags:
     url: http://swagger.io
   name: user
 paths:
+  /sqrt:
+    post:
+      operationId: mysqrt
+      description: 'Description of the endpoint'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/sqrt-input'
+      responses:
+        '200':
+          description: 'Description of this response.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sqrt-output'
+  /strength:
+    post:
+      operationId: mystrength
+      description: 'Description of the endpoint'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/strength-input'
+      responses:
+        '200':
+          description: 'Description of this response.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/strength-output'
   /pet:
     post:
       operationId: add_pet
@@ -644,6 +676,34 @@ paths:
       x-openapi-router-controller: openapi_server.controllers.user_controller
 components:
   schemas:
+    sqrt-input:
+      type: object
+      properties:
+        x:
+          type: number
+    sqrt-output:
+      type: object
+      properties:
+        x:
+          type: number
+        result:
+          type: number
+    strength-input:
+      type: object
+      properties:
+        actual:
+          type: integer
+        expected:
+          type: integer
+    strength-output:
+      type: object
+      properties:
+        actual:
+          type: integer
+        expected:
+          type: integer
+        strength:
+          type: number
     Order:
       example:
         petId: 6
