@@ -14,55 +14,54 @@ info:
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
-servers:
-- url: https://petstore.swagger.io/v2
-- url: http://petstore.swagger.io/v2
-tags:
-- description: Everything about your Pets
-  externalDocs:
-    description: Find out more
-    url: http://swagger.io
-  name: pet
-- description: Access to Petstore orders
-  name: store
-- description: Operations about user
-  externalDocs:
-    description: Find out more about our store
-    url: http://swagger.io
-  name: user
+servers: [ url: https://petstore.swagger.io/v2, url: http://petstore.swagger.io/v2 ]
+tags: 
+- name: pet
+  description: Everything about your Pets
+- name: store
+  description: Access to Petstore orders
+- name: user
+  description: Operations about user
+- name: math
+  description: Operations about user
+  
 paths:
-  /sqrt:
+  /sqrt:    
     post:
+      tags: [ math ]
       operationId: mysqrt
+      x-openapi-router-controller: openapi_server.controllers.math_controller
       description: 'Description of the endpoint'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/sqrt-input'
+              $ref: "file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/sqrt-input.yaml"
       responses:
         '200':
           description: 'Description of this response.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sqrt-output'
+                $ref: "file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/sqrt-output.yaml"
   /strength:
     post:
+      tags: [ math ]
       operationId: mystrength
+      x-openapi-router-controller: openapi_server.controllers.math_controller
       description: 'Description of the endpoint'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/strength-input'
+              $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/strength-input.yaml'
       responses:
         '200':
           description: 'Description of this response.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/strength-output'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/strength-output.yaml'
   /pet:
     post:
       operationId: add_pet
@@ -70,10 +69,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pet'
+              $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Pet'
+              $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
         description: Pet object that needs to be added to the store
         required: true
       responses:
@@ -95,10 +94,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pet'
+              $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Pet'
+              $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
         description: Pet object that needs to be added to the store
         required: true
       responses:
@@ -146,12 +145,12 @@ paths:
             application/xml:
               schema:
                 items:
-                  $ref: '#/components/schemas/Pet'
+                  $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
                 type: array
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Pet'
+                  $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
                 type: array
           description: successful operation
         400:
@@ -188,12 +187,12 @@ paths:
             application/xml:
               schema:
                 items:
-                  $ref: '#/components/schemas/Pet'
+                  $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
                 type: array
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Pet'
+                  $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
                 type: array
           description: successful operation
         400:
@@ -260,10 +259,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Pet'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
             application/json:
               schema:
-                $ref: '#/components/schemas/Pet'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Pet.yaml'
           description: successful operation
         400:
           content: {}
@@ -342,7 +341,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponse'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/ApiResponse.yaml'
           description: successful operation
       security:
       - petstore_auth:
@@ -379,7 +378,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/Order'
+              $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Order.yaml'
         description: order placed for purchasing the pet
         required: true
       responses:
@@ -387,10 +386,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Order'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Order.yaml'
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Order.yaml'
           description: successful operation
         400:
           content: {}
@@ -448,10 +447,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Order'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Order.yaml'
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/Order.yaml'
           description: successful operation
         400:
           content: {}
@@ -471,7 +470,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/User.yaml'
         description: Created user object
         required: true
       responses:
@@ -491,7 +490,7 @@ paths:
           '*/*':
             schema:
               items:
-                $ref: '#/components/schemas/User'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/User.yaml'
               type: array
         description: List of user object
         required: true
@@ -512,7 +511,7 @@ paths:
           '*/*':
             schema:
               items:
-                $ref: '#/components/schemas/User'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/User.yaml'
               type: array
         description: List of user object
         required: true
@@ -628,10 +627,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/User.yaml'
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/User.yaml'
           description: successful operation
         400:
           content: {}
@@ -659,7 +658,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: 'file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/schemas/User.yaml'
         description: Updated user object
         required: true
       responses:
@@ -675,207 +674,8 @@ paths:
       x-codegen-request-body-name: body
       x-openapi-router-controller: openapi_server.controllers.user_controller
 components:
-  schemas:
-    sqrt-input:
-      type: object
-      properties:
-        x:
-          type: number
-    sqrt-output:
-      type: object
-      properties:
-        x:
-          type: number
-        result:
-          type: number
-    strength-input:
-      type: object
-      properties:
-        actual:
-          type: integer
-        expected:
-          type: integer
-    strength-output:
-      type: object
-      properties:
-        actual:
-          type: integer
-        expected:
-          type: integer
-        strength:
-          type: number
-    Order:
-      example:
-        petId: 6
-        quantity: 1
-        id: 0
-        shipDate: 2000-01-23T04:56:07.000+00:00
-        complete: false
-        status: placed
-      properties:
-        id:
-          format: int64
-          type: integer
-        petId:
-          format: int64
-          type: integer
-        quantity:
-          format: int32
-          type: integer
-        shipDate:
-          format: date-time
-          type: string
-        status:
-          description: Order Status
-          enum:
-          - placed
-          - approved
-          - delivered
-          type: string
-        complete:
-          default: false
-          type: boolean
-      type: object
-      xml:
-        name: Order
-    Category:
-      example:
-        name: name
-        id: 6
-      properties:
-        id:
-          format: int64
-          type: integer
-        name:
-          type: string
-      type: object
-      xml:
-        name: Category
-    User:
-      example:
-        firstName: firstName
-        lastName: lastName
-        password: password
-        userStatus: 6
-        phone: phone
-        id: 0
-        email: email
-        username: username
-      properties:
-        id:
-          format: int64
-          type: integer
-        username:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-        phone:
-          type: string
-        userStatus:
-          description: User Status
-          format: int32
-          type: integer
-      type: object
-      xml:
-        name: User
-    Tag:
-      example:
-        name: name
-        id: 1
-      properties:
-        id:
-          format: int64
-          type: integer
-        name:
-          type: string
-      type: object
-      xml:
-        name: Tag
-    Pet:
-      example:
-        photoUrls:
-        - photoUrls
-        - photoUrls
-        name: doggie
-        id: 0
-        category:
-          name: name
-          id: 6
-        tags:
-        - name: name
-          id: 1
-        - name: name
-          id: 1
-        status: available
-      properties:
-        id:
-          format: int64
-          type: integer
-        category:
-          $ref: '#/components/schemas/Category'
-        name:
-          example: doggie
-          type: string
-        photoUrls:
-          items:
-            type: string
-          type: array
-          xml:
-            name: photoUrl
-            wrapped: true
-        tags:
-          items:
-            $ref: '#/components/schemas/Tag'
-          type: array
-          xml:
-            name: tag
-            wrapped: true
-        status:
-          description: pet status in the store
-          enum:
-          - available
-          - pending
-          - sold
-          type: string
-      required:
-      - name
-      - photoUrls
-      type: object
-      xml:
-        name: Pet
-    ApiResponse:
-      example:
-        code: 0
-        type: type
-        message: message
-      properties:
-        code:
-          format: int32
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
-      type: object
   securitySchemes:
     petstore_auth:
-      flows:
-        implicit:
-          authorizationUrl: http://petstore.swagger.io/oauth/dialog
-          scopes:
-            write:pets: modify pets in your account
-            read:pets: read your pets
-      type: oauth2
-      x-tokenInfoFunc: openapi_server.controllers.security_controller_.info_from_petstore_auth
-      x-scopeValidateFunc: openapi_server.controllers.security_controller_.validate_scope_petstore_auth
+      $ref: "file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/securitySchemes/petstore_auth.yaml"
     api_key:
-      in: header
-      name: api_key
-      type: apiKey
-      x-apikeyInfoFunc: openapi_server.controllers.security_controller_.info_from_api_key
+      $ref: "file:///mnt/SSD1/repos/pistache-example/src/python-flask-example/openapi_server/openapi/components/securitySchemes/api_key.yaml"

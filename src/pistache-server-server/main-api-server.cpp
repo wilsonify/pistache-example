@@ -26,11 +26,12 @@
 #include "UserApiImpl.h"
 
 #define PISTACHE_SERVER_THREADS     2
-#define PISTACHE_SERVER_MAX_PAYLOAD 32768
+#define PISTACHE_SERVER_MAX_REQUEST_SIZE 32768
+#define PISTACHE_SERVER_MAX_RESPONSE_SIZE 32768
 
 static Pistache::Http::Endpoint *httpEndpoint;
 #ifdef __linux__
-static void sigHandler(int sig){
+static void sigHandler [[noreturn]] (int sig){
     switch(sig){
         case SIGINT:
         case SIGQUIT:
@@ -74,7 +75,8 @@ int main() {
     auto opts = Pistache::Http::Endpoint::options()
         .threads(PISTACHE_SERVER_THREADS);
     opts.flags(Pistache::Tcp::Options::ReuseAddr);
-    opts.maxPayload(PISTACHE_SERVER_MAX_PAYLOAD);
+    opts.maxRequestSize(PISTACHE_SERVER_MAX_REQUEST_SIZE);
+    opts.maxResponseSize(PISTACHE_SERVER_MAX_RESPONSE_SIZE);
     httpEndpoint->init(opts);
 
     
@@ -93,4 +95,3 @@ int main() {
     httpEndpoint->shutdown();
 
 }
-
