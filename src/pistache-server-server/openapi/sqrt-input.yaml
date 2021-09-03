@@ -1,0 +1,5 @@
+sqrt-input:
+  type: object
+  properties:
+    x:
+      type: number

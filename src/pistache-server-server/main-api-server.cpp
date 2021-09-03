@@ -20,6 +20,7 @@
 #include <unistd.h>
 #endif
 
+#include "MathApiImpl.h"
 #include "PetApiImpl.h"
 #include "StoreApiImpl.h"
 #include "UserApiImpl.h"
@@ -77,6 +78,8 @@ int main() {
     httpEndpoint->init(opts);
 
     
+    MathApiImpl MathApiserver(router);
+    MathApiserver.init();
     PetApiImpl PetApiserver(router);
     PetApiserver.init();
     StoreApiImpl StoreApiserver(router);
