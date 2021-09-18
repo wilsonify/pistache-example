@@ -7,3 +7,9 @@
 [submodule "lib/rapidjson"]
 	path = lib/rapidjson
 	url = https://github.com/miloyip/rapidjson.git
+[submodule "lib/AMQP-CPP"]
+	path = lib/AMQP-CPP
+	url = https://github.com/CopernicaMarketingSoftware/AMQP-CPP
+[submodule "lib/libev"]
+	path = lib/libev
+	url = https://github.com/enki/libev
