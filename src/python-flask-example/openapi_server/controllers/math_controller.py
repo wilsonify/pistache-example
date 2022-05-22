@@ -20,8 +20,6 @@ def mysqrt(body):  # noqa: E501
 
 def mystrength(body):  # noqa: E501
     """ signal strength """
-    if connexion.request.is_json:
-        body = Pet.from_dict(connexion.request.get_json())  # noqa: E501
     actual = body['actual']
     expected = body['expected']
     result = actual / expected

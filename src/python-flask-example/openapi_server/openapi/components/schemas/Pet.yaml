@@ -18,7 +18,7 @@ properties:
     format: int64
     type: integer
   category:
-    $ref: 'Category.yaml'
+    $ref: "Category.yaml"
   name:
     example: doggie
     type: string
@@ -31,7 +31,7 @@ properties:
       wrapped: true
   tags:
     items:
-      $ref: 'Tag.yaml'
+      $ref: "Tag.yaml"
     type: array
     xml:
       name: tag
